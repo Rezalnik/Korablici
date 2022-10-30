@@ -11,5 +11,4 @@ public class MoveCommand : ICommand
     {
         obj.Position = obj.Position + obj.Velocity;
     }
-    //public void Execute() => this.obj.Position += this.obj.Velocity;
 }
