@@ -25,8 +25,20 @@ public class Vector
     }
     public override bool Equals(object? obj)
     {
-        return obj is Vector vector &&
-               EqualityComparer<int[]>.Default.Equals(v, vector.v);
+        if (obj is Vector vector)
+        {
+            var isequal = true;
+            if (Size() == vector.Size())
+            {
+                for (var i = 0; i < Size(); i++)
+                {
+                    isequal = isequal && (v[i] == vector[i]);
+                }
+            }
+            else isequal = false;
+            return isequal;
+        }
+        return false;
     }
     public override int GetHashCode()
     {
