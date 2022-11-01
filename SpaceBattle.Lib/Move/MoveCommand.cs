@@ -10,5 +10,6 @@ public class MoveCommand : ICommand
     public void Execute()
     {
         obj.Position = obj.Position + obj.Velocity;
+        //throw new NotImplementedException();
     }
 }
