@@ -1,11 +1,14 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: dotnet
+
+on: [push, fork]
+
 jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-22.04
+    
     steps:
       - uses: actions/checkout@v3
+      
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
