@@ -4,7 +4,7 @@ public class CSVReader: ICommand
 {
     private string spliter;
     private string fileway;
-    private List<Dictionary<string, object?>> table;
+    public List<Dictionary<string, object?>> table;
     public CSVReader(string fileway, string spliter="; ")
     {
         this.table = new List<Dictionary<string, object?>>();
@@ -16,17 +16,16 @@ public class CSVReader: ICommand
     {
         using (var reader = new StreamReader(fileway))
         {
-            IList<string> listHEADERS = reader.ReadLine().Split("; ");
+            IList<string> listHEADERS = reader.ReadLine()!.Split("; ");
             
             while (!reader.EndOfStream)
             {
-                string[] values = reader.ReadLine().Split("; ");
+                string[] values = reader.ReadLine()!.Split("; ");
                 table.Add(new Dictionary<string, object?>(listHEADERS.Zip(values, (k, v) => new KeyValuePair<string, object?>(k, (object?)v))));
             }
         }
     }
-
-    public List<Dictionary<string, object?>> get_table(){
-        return this.table;
-    }
+    // public List<Dictionary<string, object?>> get_table(){
+    //     return this.table;
+    // }
 }

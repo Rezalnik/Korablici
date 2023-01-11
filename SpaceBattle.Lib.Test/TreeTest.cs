@@ -21,14 +21,14 @@ public class TreeTest
         Init_Score_Env();
         CSVReader testingCSVReader = (CSVReader)Hwdtech.IoC.Resolve<SpaceBattle.Lib.ICommand>("SpaceShip.Lib.Comands.CSVReader", @"./../../../colision_vectors.csv", "; ");
         testingCSVReader.Execute();
-        var table_for_teach = testingCSVReader.get_table();
+        var table_for_teach = testingCSVReader.table;
         Func<object, object> func_for_test = (object z) => z;
         var tree_testing = Hwdtech.IoC.Resolve<Tree>("SpaceShip.Lib.Get.Tree", func_for_test);
         var list_of_features = new List<List<object>>();
         var results = new List<object>();
         foreach (var item in table_for_teach)
         {
-            var feat = new List<object>(item.Values);
+            var feat = new List<object>(item.Values!);
             feat.ForEach(c => c = Int32.Parse((string)c ?? "-1"));
             list_of_features.Add(feat.GetRange(0, feat.Count-2));
             results.Add((new List<object>(feat))[feat.Count - 1]);
