@@ -25,7 +25,4 @@ public class CSVReader: ICommand
             }
         }
     }
-    // public List<Dictionary<string, object?>> get_table(){
-    //     return this.table;
-    // }
 }
